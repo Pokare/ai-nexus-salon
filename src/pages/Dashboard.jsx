@@ -1,6 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Users, BookOpen, MessageCircle, TrendingUp, ArrowRight } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import styles from './Dashboard.module.css';
@@ -8,122 +6,100 @@ import styles from './Dashboard.module.css';
 const Dashboard = () => {
   const { currentUser } = useAuth();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.3, staggerChildren: 0.08 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 12 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.25 } },
-  };
-
   const stats = [
-    { icon: Users, label: '総メンバー数', value: '2,847', change: '+12%', color: '#6366f1' },
-    { icon: BookOpen, label: 'コンテンツ数', value: '156', change: '+8', color: '#8b5cf6' },
-    { icon: MessageCircle, label: 'Q&A投稿数', value: '892', change: '+24', color: '#ec4899' },
-    { icon: TrendingUp, label: 'エンゲージメント', value: '94%', change: '+3%', color: '#06b6d4' },
+    { label: '総メンバー', value: '2,847' },
+    { label: 'コース数', value: '8' },
+    { label: 'Q&A投稿', value: '892' },
+    { label: 'エンゲージメント', value: '94%' },
+  ];
+
+  const recentCourses = [
+    { id: 1, title: 'ChatGPT完全マスター', progress: 72, image: 'https://picsum.photos/seed/ai1/600/340' },
+    { id: 2, title: '上級プロンプトエンジニアリング', progress: 35, image: 'https://picsum.photos/seed/ai2/600/340' },
+    { id: 3, title: 'Midjourney & DALL-E入門', progress: 55, image: 'https://picsum.photos/seed/ai6/600/340' },
   ];
 
   const recentActivity = [
-    { title: '上級プロンプトエンジニアリング', description: '新しいコースが追加されました', time: '2時間前', icon: '📚' },
-    { title: 'AI Nexusへようこそ！', description: '5人の新メンバーが参加しました', time: '4時間前', icon: '🎉' },
-    { title: 'あなたの質問に回答がありました', description: 'Q&A投稿に3件の返信', time: '1日前', icon: '💬' },
-    { title: 'マイルストーン達成！', description: '10レッスンを完了しました', time: '2日前', icon: '⭐' },
-  ];
-
-  const quickLinks = [
-    { label: 'コースを見る', icon: '📖', path: '/contents' },
-    { label: 'Q&Aに参加', icon: '❓', path: '/qa' },
-    { label: '通知を確認', icon: '🔔', path: '/notifications' },
+    { title: '上級プロンプトエンジニアリング', desc: '新しいコースが追加されました', time: '2時間前' },
+    { title: 'AI Nexusへようこそ', desc: '5人の新メンバーが参加しました', time: '4時間前' },
+    { title: '質問に回答がつきました', desc: 'Q&A投稿に3件の返信', time: '1日前' },
+    { title: 'マイルストーン達成', desc: '10レッスンを完了しました', time: '2日前' },
   ];
 
   return (
     <div className="page-wrapper">
+      {/* Hero Section */}
+      <div className={styles.hero}>
+        <div className={styles.heroInner}>
+          <p className={styles.heroSub}>Learn from the Best</p>
+          <h1 className={styles.heroTitle}>AI NEXUS</h1>
+          <p className={styles.heroDesc}>
+            AIスキルの未来を形作る。厳選されたコースとコミュニティ。
+          </p>
+          <div className={styles.heroPricing}>
+            <span>すべてのコースにアクセス。 </span>
+            <span className={styles.heroPriceNum}>8</span>
+            <span> コース学び放題</span>
+          </div>
+          <Link to="/contents" className={styles.heroLink}>コース一覧を見る &rarr;</Link>
+        </div>
+      </div>
+
       <div className="page-content">
-        <motion.div
-          className={styles.container}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Welcome */}
-          <motion.div className={styles.welcome} variants={itemVariants}>
-            <div>
-              <h1>おかえりなさい 👋</h1>
-              <p className={styles.email}>{currentUser?.email}</p>
+        {/* Stats row */}
+        <div className={styles.statsRow}>
+          {stats.map((stat, i) => (
+            <div key={i} className={styles.statItem}>
+              <span className={styles.statValue}>{stat.value}</span>
+              <span className={styles.statLabel}>{stat.label}</span>
             </div>
-          </motion.div>
+          ))}
+        </div>
 
-          {/* Stats */}
-          <motion.div className={styles.statsGrid} variants={itemVariants}>
-            {stats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <div key={idx} className="glass-card" style={{ padding: '1.25rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                    <div style={{ background: `${stat.color}12`, padding: '0.5rem', borderRadius: 'var(--radius-md)' }}>
-                      <Icon size={20} color={stat.color} />
+        {/* Continue Learning */}
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>学習を続ける</h2>
+            <Link to="/contents" className={styles.sectionLink}>すべて見る</Link>
+          </div>
+          <div className={styles.courseGrid}>
+            {recentCourses.map((course) => (
+              <Link to="/contents" key={course.id} className={styles.courseCard}>
+                <div className={styles.courseImage}>
+                  <img src={course.image} alt={course.title} loading="lazy" />
+                  <div className={styles.courseProgress}>
+                    <div className={styles.courseProgressBar}>
+                      <div
+                        className={styles.courseProgressFill}
+                        style={{ width: `${course.progress}%` }}
+                      />
                     </div>
-                    <span style={{ color: '#10b981', fontSize: '0.75rem', fontWeight: '600' }}>{stat.change}</span>
+                    <span className={styles.courseProgressText}>{course.progress}%</span>
                   </div>
-                  <p style={{ margin: '0 0 0.25rem', color: 'var(--text-secondary)', fontSize: '0.8125rem' }}>{stat.label}</p>
-                  <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '700' }}>{stat.value}</h3>
                 </div>
-              );
-            })}
-          </motion.div>
-
-          {/* Quick Links */}
-          <motion.div variants={itemVariants}>
-            <h2 style={{ marginBottom: '0.75rem' }}>クイックリンク</h2>
-            <div className={styles.quickLinks}>
-              {quickLinks.map((link, idx) => (
-                <Link
-                  key={idx}
-                  to={link.path}
-                  className="glass-card"
-                  style={{
-                    padding: '1rem 1.25rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.875rem',
-                    textDecoration: 'none',
-                    color: 'inherit',
-                  }}
-                >
-                  <span style={{ fontSize: '1.25rem' }}>{link.icon}</span>
-                  <span style={{ flex: 1, fontWeight: '500', fontSize: '0.9375rem', color: 'var(--text-primary)' }}>{link.label}</span>
-                  <ArrowRight size={18} color="var(--text-tertiary)" />
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Recent Activity */}
-          <motion.div variants={itemVariants}>
-            <h2 style={{ marginBottom: '0.75rem' }}>最近のアクティビティ</h2>
-            <div className={styles.activityList}>
-              {recentActivity.map((activity, idx) => (
-                <div
-                  key={idx}
-                  className="glass-card"
-                  style={{ padding: '1rem 1.25rem', display: 'flex', gap: '0.875rem', alignItems: 'center' }}
-                >
-                  <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>{activity.icon}</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <p style={{ margin: 0, fontWeight: '500', fontSize: '0.9375rem', color: 'var(--text-primary)' }}>{activity.title}</p>
-                    <p style={{ margin: '0.125rem 0 0', color: 'var(--text-secondary)', fontSize: '0.8125rem' }}>{activity.description}</p>
-                  </div>
-                  <span style={{ color: 'var(--text-tertiary)', fontSize: '0.75rem', flexShrink: 0 }}>{activity.time}</span>
+                <div className={styles.courseInfo}>
+                  <h3 className={styles.courseTitle}>{course.title}</h3>
                 </div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Recent Activity */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>最近のアクティビティ</h2>
+          <div className={styles.activityList}>
+            {recentActivity.map((item, i) => (
+              <div key={i} className={styles.activityItem}>
+                <div className={styles.activityContent}>
+                  <span className={styles.activityTitle}>{item.title}</span>
+                  <span className={styles.activityDesc}>{item.desc}</span>
+                </div>
+                <span className={styles.activityTime}>{item.time}</span>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

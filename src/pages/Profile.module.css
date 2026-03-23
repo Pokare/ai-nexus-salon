@@ -1,49 +1,228 @@
-.container {
+.hero {
+  padding: 64px 48px 48px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.heroInner {
+  max-width: 500px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  max-width: 700px;
-}
-
-.profileCard {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-}
-
-.avatarContainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
 .avatar {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: var(--primary);
+  background: var(--text);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.75rem;
+  font-size: 28px;
+  margin-bottom: 16px;
 }
 
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
+.heroTitle {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
-.settingsList {
+.heroMeta {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Stats */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.statItem {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border-right: 1px solid var(--border);
+}
+
+.statItem:last-child {
+  border-right: none;
+}
+
+.statValue {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.sectionTitleDanger {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  color: var(--danger);
+}
+
+/* Settings */
+.settingsList {
+  border-top: 1px solid var(--border);
+}
+
+.settingItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.settingInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.settingName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.settingDesc {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* Toggle */
+.toggle {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  display: none;
+}
+
+.toggleTrack {
+  display: block;
+  width: 44px;
+  height: 24px;
+  background: var(--border);
+  border-radius: 12px;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.toggle input:checked + .toggleTrack {
+  background: var(--text);
+}
+
+.toggleThumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+}
+
+/* Danger */
+.dangerCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+
+.dangerTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--danger);
+  margin-bottom: 4px;
+}
+
+.dangerDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.dangerBtn {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.dangerBtn:hover {
+  background: var(--danger);
+  color: white;
 }
 
 @media (max-width: 768px) {
-  .statsGrid {
+  .hero {
+    padding: 40px 24px;
+  }
+
+  .statsRow {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statItem:nth-child(2) {
+    border-right: none;
   }
 }

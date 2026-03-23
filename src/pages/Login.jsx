@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Zap } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import styles from './Login.module.css';
 
@@ -35,108 +33,106 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.left}>
-        <div className={styles.leftContent}>
-          <div className={styles.logoMark}>
-            <Zap size={28} />
-          </div>
-          <h1 className={styles.brand}>AI Nexus</h1>
-          <p className={styles.tagline}>AIの学びとコミュニティへの入口</p>
-
-          <div className={styles.features}>
-            <div className={styles.feature}>
-              <span className={styles.featureIcon}>📚</span>
-              <div>
-                <h4>体系的な学習</h4>
-                <p>初級から上級まで段階的に学べるカリキュラム</p>
-              </div>
-            </div>
-            <div className={styles.feature}>
-              <span className={styles.featureIcon}>💬</span>
-              <div>
-                <h4>コミュニティ</h4>
-                <p>仲間と質問し合い、知識を深める</p>
-              </div>
-            </div>
-            <div className={styles.feature}>
-              <span className={styles.featureIcon}>🚀</span>
-              <div>
-                <h4>実践的スキル</h4>
-                <p>すぐに使えるAIツール活用法を習得</p>
-              </div>
-            </div>
-          </div>
+    <div className={styles.page}>
+      {/* Marquee */}
+      <div className={styles.marquee}>
+        <div className={styles.marqueeTrack}>
+          {[...Array(12)].map((_, i) => (
+            <span key={i} className={styles.marqueeItem}>
+              <span className={styles.marqueeDot}>&#9679;</span>
+              <span className={styles.marqueeBold}>AI Nexus</span>
+              <span>AIの学びとコミュニティへの入口</span>
+            </span>
+          ))}
         </div>
       </div>
 
-      <div className={styles.right}>
-        <motion.div
-          className={styles.formContainer}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <h2 className={styles.formTitle}>
-            {isLogin ? 'ログイン' : '新規登録'}
-          </h2>
-          <p className={styles.formSubtitle}>
-            {isLogin ? 'アカウントにログインしてください' : '新しいアカウントを作成します'}
-          </p>
+      <div className={styles.container}>
+        {/* Left - Hero */}
+        <div className={styles.hero}>
+          <div className={styles.heroContent}>
+            <p className={styles.heroSub}>Learn from the Best</p>
+            <h1 className={styles.heroTitle}>AI NEXUS</h1>
+            <p className={styles.heroDesc}>
+              AIスキルの未来を形作る。<br />
+              厳選されたコースとコミュニティ。
+            </p>
 
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className="input-group">
-              <label className="input-label">メールアドレス</label>
-              <input
-                type="email"
-                className="input-field"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+            <div className={styles.heroCta}>
+              <span className={styles.heroPrice}>8</span>
+              <span className={styles.heroPriceSub}>本のコースが学び放題</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right - Form */}
+        <div className={styles.formSide}>
+          <div className={styles.formWrapper}>
+            <div className={styles.formTabs}>
+              <button
+                className={`${styles.formTab} ${isLogin ? styles.formTabActive : ''}`}
+                onClick={() => { setIsLogin(true); setError(''); }}
+              >
+                ログイン
+              </button>
+              <button
+                className={`${styles.formTab} ${!isLogin ? styles.formTabActive : ''}`}
+                onClick={() => { setIsLogin(false); setError(''); }}
+              >
+                新規登録
+              </button>
             </div>
 
-            <div className="input-group">
-              <label className="input-label">パスワード</label>
-              <input
-                type="password"
-                className="input-field"
-                placeholder="6文字以上"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
+            <form onSubmit={handleSubmit} className={styles.form}>
+              <div className={styles.inputGroup}>
+                <label className={styles.label}>メールアドレス</label>
+                <input
+                  type="email"
+                  className={styles.input}
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
 
-            {error && (
-              <div className={styles.error}>{error}</div>
-            )}
+              <div className={styles.inputGroup}>
+                <label className={styles.label}>パスワード</label>
+                <input
+                  type="password"
+                  className={styles.input}
+                  placeholder="6文字以上"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
 
-            <button
-              type="submit"
-              className="btn btn-primary"
-              style={{ width: '100%', padding: '0.75rem', marginTop: '0.5rem' }}
-              disabled={loading}
-            >
-              {loading ? 'しばらくお待ちください...' : isLogin ? 'ログイン' : '新規登録'}
-            </button>
-          </form>
+              {error && (
+                <div className={styles.error}>{error}</div>
+              )}
 
-          <p className={styles.switchText}>
-            {isLogin ? 'アカウントをお持ちでない方は ' : 'すでにアカウントをお持ちの方は '}
-            <button
-              type="button"
-              onClick={() => {
-                setIsLogin(!isLogin);
-                setError('');
-              }}
-              className={styles.switchLink}
-            >
-              {isLogin ? '新規登録' : 'ログイン'}
-            </button>
-          </p>
-        </motion.div>
+              <button
+                type="submit"
+                className={styles.submitBtn}
+                disabled={loading}
+              >
+                {loading ? 'しばらくお待ちください...' : isLogin ? 'ログイン' : 'アカウントを作成'}
+              </button>
+            </form>
+
+            <p className={styles.switchText}>
+              {isLogin ? 'アカウントをお持ちでない方は ' : 'すでにアカウントをお持ちの方は '}
+              <button
+                type="button"
+                onClick={() => { setIsLogin(!isLogin); setError(''); }}
+                className={styles.switchLink}
+              >
+                {isLogin ? '新規登録' : 'ログイン'}
+              </button>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

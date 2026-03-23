@@ -1,45 +1,249 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+/* Hero */
+.hero {
+  padding: 80px 48px 64px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
 }
 
-.welcome {
+.heroInner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.heroSub {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.heroTitle {
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  margin-bottom: 20px;
+}
+
+.heroDesc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.heroPricing {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.heroPriceNum {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.heroLink {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.heroLink:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Stats */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.statItem {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border-right: 1px solid var(--border);
+}
+
+.statItem:last-child {
+  border-right: none;
+}
+
+.statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 48px;
+}
+
+.sectionHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 24px;
 }
 
-.email {
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sectionLink {
+  font-size: 13px;
   color: var(--text-secondary);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-.emoji {
-  font-size: 2rem;
-}
-
-.statsGrid {
+/* Course Grid */
+.courseGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.quickLinks {
+.courseCard {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.courseCard:hover {
+  text-decoration: none;
+}
+
+.courseCard:hover .courseImage img {
+  transform: scale(1.03);
+}
+
+.courseImage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.courseImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.courseProgress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
 }
 
+.courseProgressBar {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.3);
+}
+
+.courseProgressFill {
+  height: 100%;
+  background: white;
+}
+
+.courseProgressText {
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+}
+
+.courseInfo {
+  padding: 4px 0;
+}
+
+.courseTitle {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Activity */
 .activityList {
+  border-top: 1px solid var(--border);
+}
+
+.activityItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+
+.activityContent {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 2px;
+}
+
+.activityTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.activityDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.activityTime {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
-  .statsGrid {
+  .hero {
+    padding: 48px 24px;
+  }
+
+  .statsRow {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statItem:nth-child(2) {
+    border-right: none;
+  }
+
+  .courseGrid {
+    grid-template-columns: 1fr;
   }
 }
