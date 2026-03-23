@@ -8,7 +8,6 @@ const Profile = () => {
   const { currentUser } = useAuth();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
-  };
 
   const userInitial = currentUser?.email?.[0]?.toUpperCase() || 'U';
   const memberSince = new Date(currentUser?.metadata?.creationTime || Date.now());
