@@ -30,28 +30,28 @@ const Dashboard = () => {
   const stats = [
     {
       icon: Users,
-      label: 'Total Members',
+      label: '総メンバー数',
       value: '2,847',
       change: '+12%',
       color: '#6366f1',
     },
     {
       icon: BookOpen,
-      label: 'Contents',
+      label: 'コンテンツ数',
       value: '156',
       change: '+8',
       color: '#8b5cf6',
     },
     {
       icon: MessageCircle,
-      label: 'Q&A Posts',
+      label: 'Q&A投稿数',
       value: '892',
       change: '+24',
       color: '#ec4899',
     },
     {
       icon: TrendingUp,
-      label: 'Engagement',
+      label: 'エンゲージメント',
       value: '94%',
       change: '+3%',
       color: '#06b6d4',
@@ -61,38 +61,38 @@ const Dashboard = () => {
   const recentActivity = [
     {
       type: 'new_content',
-      title: 'Advanced Prompt Engineering',
-      description: 'New course available',
-      time: '2 hours ago',
+      title: '上級プロンプトエンジニアリング',
+      description: '新しいコースが追加されました',
+      time: '2時間前',
       icon: '📚',
     },
     {
       type: 'new_member',
-      title: 'Welcome to AI Nexus!',
-      description: '5 new members joined',
-      time: '4 hours ago',
+      title: 'AI Nexusへようこそ！',
+      description: '5人の新メンバーが参加しました',
+      time: '4時間前',
       icon: '🎉',
     },
     {
       type: 'qa_answer',
-      title: 'Your question answered',
-      description: '3 replies to your Q&A post',
-      time: '1 day ago',
+      title: 'あなたの質問に回答がありました',
+      description: 'Q&A投稿に3件の返信',
+      time: '1日前',
       icon: '💬',
     },
     {
       type: 'milestone',
-      title: 'Milestone unlocked',
-      description: 'You completed 10 lessons',
-      time: '2 days ago',
+      title: 'マイルストーン達成！',
+      description: '10レッスンを完了しました',
+      time: '2日前',
       icon: '⭐',
     },
   ];
 
   const quickLinks = [
-    { label: 'Browse Courses', icon: '📖', path: '/contents' },
-    { label: 'Join Q&A', icon: '❓', path: '/qa' },
-    { label: 'View Alerts', icon: '🔔', path: '/notifications' },
+    { label: 'コースを見る', icon: '📖', path: '/contents' },
+    { label: 'Q&Aに参加', icon: '❓', path: '/qa' },
+    { label: '通知を確認', icon: '🔔', path: '/notifications' },
   ];
 
   return (
@@ -107,7 +107,7 @@ const Dashboard = () => {
           {/* Welcome Section */}
           <motion.div className={styles.welcome} variants={itemVariants}>
             <div>
-              <h1>Welcome back</h1>
+              <h1>おかえりなさい</h1>
               <p className={styles.email}>{currentUser?.email}</p>
             </div>
             <div className={styles.greeting}>
@@ -148,7 +148,7 @@ const Dashboard = () => {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
-            <h2 style={{ marginBottom: '1rem', fontSize: '1.25rem' }}>Quick Links</h2>
+            <h2 style={{ marginBottom: '1rem', fontSize: '1.25rem' }}>クイックリンク</h2>
             <div className={styles.quickLinks}>
               {quickLinks.map((link, idx) => (
                 <motion.a
@@ -180,7 +180,7 @@ const Dashboard = () => {
           {/* Recent Activity */}
           <motion.div variants={itemVariants}>
             <h2 style={{ marginBottom: '1rem', fontSize: '1.25rem', marginTop: '2rem' }}>
-              Recent Activity
+              最近のアクティビティ
             </h2>
             <div className={styles.activityList}>
               {recentActivity.map((activity, idx) => (

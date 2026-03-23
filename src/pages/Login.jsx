@@ -67,7 +67,7 @@ const Login = () => {
             <h1>AI Nexus</h1>
           </div>
           <p className={styles.subtitle}>
-            Your gateway to AI mastery and community
+            AIの学びとコミュニティへの入口
           </p>
         </motion.div>
 
@@ -80,7 +80,7 @@ const Login = () => {
                 setError('');
               }}
             >
-              Log In
+              ログイン
             </button>
             <button
               className={`${styles.toggleBtn} ${!isLogin ? styles.active : ''}`}
@@ -89,13 +89,13 @@ const Login = () => {
                 setError('');
               }}
             >
-              Sign Up
+              新規登録
             </button>
           </div>
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className="input-group">
-              <label className="input-label">Email</label>
+              <label className="input-label">メールアドレス</label>
               <input
                 type="email"
                 className="input-field"
@@ -107,7 +107,7 @@ const Login = () => {
             </div>
 
             <div className="input-group">
-              <label className="input-label">Password</label>
+              <label className="input-label">パスワード</label>
               <input
                 type="password"
                 className="input-field"
@@ -134,12 +134,12 @@ const Login = () => {
               style={{ width: '100%', marginTop: '1.5rem' }}
               disabled={loading}
             >
-              {loading ? 'Please wait...' : isLogin ? 'Log In' : 'Sign Up'}
+              {loading ? 'しばらくお待ちください...' : isLogin ? 'ログイン' : '新規登録'}
             </button>
           </form>
 
           <p className={styles.hint}>
-            {isLogin ? "Don't have an account? " : 'Already have an account? '}
+            {isLogin ? 'アカウントをお持ちでない方は ' : 'すでにアカウントをお持ちの方は '}
             <button
               type="button"
               onClick={() => {
@@ -148,7 +148,7 @@ const Login = () => {
               }}
               className={styles.link}
             >
-              {isLogin ? 'Sign up' : 'Log in'}
+              {isLogin ? '新規登録' : 'ログイン'}
             </button>
           </p>
         </motion.div>
@@ -157,22 +157,22 @@ const Login = () => {
           <div className={styles.feature}>
             <div className={styles.featureIcon}>💡</div>
             <div>
-              <h4>Learn AI</h4>
-              <p>Master AI tools and concepts</p>
+              <h4>AIを学ぶ</h4>
+              <p>AIツールと概念をマスター</p>
             </div>
           </div>
           <div className={styles.feature}>
             <div className={styles.featureIcon}>🤝</div>
             <div>
-              <h4>Connect</h4>
-              <p>Join a vibrant community</p>
+              <h4>つながる</h4>
+              <p>活気あるコミュニティに参加</p>
             </div>
           </div>
           <div className={styles.feature}>
             <div className={styles.featureIcon}>⚡</div>
             <div>
-              <h4>Grow</h4>
-              <p>Accelerate your AI journey</p>
+              <h4>成長する</h4>
+              <p>AIスキルを加速させよう</p>
             </div>
           </div>
         </motion.div>

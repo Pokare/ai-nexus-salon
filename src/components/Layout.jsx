@@ -7,11 +7,11 @@ const Layout = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: '/dashboard', label: 'Home', icon: Home },
-    { path: '/contents', label: 'Contents', icon: FileText },
+    { path: '/dashboard', label: 'ホーム', icon: Home },
+    { path: '/contents', label: 'コンテンツ', icon: FileText },
     { path: '/qa', label: 'Q&A', icon: HelpCircle },
-    { path: '/notifications', label: 'Alerts', icon: Bell },
-    { path: '/profile', label: 'Profile', icon: User },
+    { path: '/notifications', label: '通知', icon: Bell },
+    { path: '/profile', label: 'プロフィール', icon: User },
   ];
 
   return (

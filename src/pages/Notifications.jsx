@@ -8,8 +8,8 @@ const Notifications = () => {
     {
       id: 1,
       type: 'welcome',
-      title: 'Welcome to AI Nexus!',
-      message: 'Get started with our AI mastery program and join 2,847 members.',
+      title: 'AI Nexusへようこそ！',
+      message: 'AIマスタープログラムを始めましょう。2,847人のメンバーが参加しています。',
       time: new Date(),
       read: true,
       icon: '🎉',
@@ -17,8 +17,8 @@ const Notifications = () => {
     {
       id: 2,
       type: 'content',
-      title: 'New Course: Advanced Prompt Engineering',
-      message: 'Check out our latest course on mastering prompt techniques.',
+      title: '新コース：上級プロンプトエンジニアリング',
+      message: 'プロンプト技術をマスターする最新コースをチェックしましょう。',
       time: new Date(Date.now() - 2 * 60 * 60 * 1000),
       read: false,
       icon: '📚',
@@ -26,8 +26,8 @@ const Notifications = () => {
     {
       id: 3,
       type: 'community',
-      title: '5 New Members Joined',
-      message: 'Our community is growing! Welcome our latest members.',
+      title: '5人の新メンバーが参加',
+      message: 'コミュニティが成長しています！新しいメンバーを歓迎しましょう。',
       time: new Date(Date.now() - 4 * 60 * 60 * 1000),
       read: false,
       icon: '👥',
@@ -35,8 +35,8 @@ const Notifications = () => {
     {
       id: 4,
       type: 'qa',
-      title: 'New Answer to Your Question',
-      message: 'Someone replied to "How to write effective prompts?"',
+      title: 'あなたの質問に回答がありました',
+      message: '「効果的なプロンプトの書き方」に返信がつきました。',
       time: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
       read: true,
       icon: '💬',
@@ -44,8 +44,8 @@ const Notifications = () => {
     {
       id: 5,
       type: 'achievement',
-      title: 'Milestone Unlocked: 10 Lessons Completed',
-      message: 'You\'ve completed 10 lessons. Keep up the great work!',
+      title: 'マイルストーン達成：10レッスン完了',
+      message: '10レッスンを完了しました。この調子で頑張りましょう！',
       time: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
       read: true,
       icon: '⭐',
@@ -53,8 +53,8 @@ const Notifications = () => {
     {
       id: 6,
       type: 'update',
-      title: 'Platform Update: New Features Available',
-      message: 'We\'ve added bookmarking and advanced filters to the content library.',
+      title: 'プラットフォーム更新：新機能が追加されました',
+      message: 'ブックマーク機能と高度なフィルターがコンテンツライブラリに追加されました。',
       time: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
       read: true,
       icon: '✨',
@@ -144,10 +144,10 @@ const Notifications = () => {
           {/* Header */}
           <motion.div className={styles.header} variants={itemVariants}>
             <div>
-              <h1>Notifications</h1>
+              <h1>通知</h1>
               {unreadCount > 0 && (
                 <p style={{ color: 'var(--text-secondary)', margin: '0.5rem 0 0 0' }}>
-                  {unreadCount} unread notification{unreadCount !== 1 ? 's' : ''}
+                  {unreadCount}件の未読通知
                 </p>
               )}
             </div>
@@ -158,7 +158,7 @@ const Notifications = () => {
                 style={{ gap: '0.5rem' }}
               >
                 <CheckCheck size={18} />
-                Mark all as read
+                すべて既読にする
               </button>
             )}
           </motion.div>
@@ -167,15 +167,15 @@ const Notifications = () => {
           {notifications.length === 0 ? (
             <motion.div className={styles.emptyState} variants={itemVariants}>
               <span style={{ fontSize: '3rem' }}>📭</span>
-              <h3>No notifications</h3>
-              <p>You're all caught up!</p>
+              <h3>通知はありません</h3>
+              <p>すべて確認済みです！</p>
             </motion.div>
           ) : (
             <div className={styles.list}>
               {/* Today */}
               {groupedNotifications.today.length > 0 && (
                 <motion.div variants={itemVariants}>
-                  <h3 className={styles.sectionTitle}>Today</h3>
+                  <h3 className={styles.sectionTitle}>今日</h3>
                   <div className={styles.notificationGroup}>
                     {groupedNotifications.today.map((notif) => (
                       <NotificationCard
@@ -192,7 +192,7 @@ const Notifications = () => {
               {/* Yesterday */}
               {groupedNotifications.yesterday.length > 0 && (
                 <motion.div variants={itemVariants}>
-                  <h3 className={styles.sectionTitle}>Yesterday</h3>
+                  <h3 className={styles.sectionTitle}>昨日</h3>
                   <div className={styles.notificationGroup}>
                     {groupedNotifications.yesterday.map((notif) => (
                       <NotificationCard
@@ -209,7 +209,7 @@ const Notifications = () => {
               {/* Earlier */}
               {groupedNotifications.earlier.length > 0 && (
                 <motion.div variants={itemVariants}>
-                  <h3 className={styles.sectionTitle}>Earlier</h3>
+                  <h3 className={styles.sectionTitle}>それ以前</h3>
                   <div className={styles.notificationGroup}>
                     {groupedNotifications.earlier.map((notif) => (
                       <NotificationCard
@@ -234,9 +234,9 @@ const NotificationCard = ({ notification, onMarkRead, onDelete }) => {
   const formatTime = (date) => {
     const hours = new Date().getHours() - new Date(date).getHours();
     if (hours < 1) {
-      return `${new Date().getMinutes() - new Date(date).getMinutes()}m ago`;
+      return `${new Date().getMinutes() - new Date(date).getMinutes()}分前`;
     }
-    return `${hours}h ago`;
+    return `${hours}時間前`;
   };
 
   return (

@@ -45,25 +45,25 @@ const Profile = () => {
 
   const stats = [
     {
-      label: 'Courses Completed',
+      label: '完了コース',
       value: '12',
       icon: '📚',
       color: '#6366f1',
     },
     {
-      label: 'Q&A Contributions',
+      label: 'Q&A貢献数',
       value: '45',
       icon: '💬',
       color: '#8b5cf6',
     },
     {
-      label: 'Learning Streak',
-      value: '21 days',
+      label: '学習連続日数',
+      value: '21日',
       icon: '🔥',
       color: '#ec4899',
     },
     {
-      label: 'Skills Unlocked',
+      label: '習得スキル',
       value: '8',
       icon: '⭐',
       color: '#06b6d4',
@@ -96,13 +96,13 @@ const Profile = () => {
               </p>
               <p style={{ margin: '0.75rem 0 0 0', color: 'var(--text-tertiary)', fontSize: '0.875rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
                 <Calendar size={16} />
-                Member since {memberSince.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+                {memberSince.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long' })}から参加
               </p>
             </div>
 
             <div style={{ display: 'flex', gap: '1rem' }}>
               <button className="btn btn-secondary" style={{ flex: 1 }}>
-                Edit Profile
+                プロフィール編集
               </button>
               <button
                 className="btn btn-ghost"
@@ -110,7 +110,7 @@ const Profile = () => {
                 style={{ flex: 1, gap: '0.5rem', color: '#ef4444' }}
               >
                 <LogOut size={18} />
-                Log Out
+                ログアウト
               </button>
             </div>
           </motion.div>
@@ -141,14 +141,14 @@ const Profile = () => {
           <motion.div variants={itemVariants}>
             <h2 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>
               <Award size={24} style={{ marginRight: '0.5rem', display: 'inline' }} />
-              Account Settings
+              アカウント設定
             </h2>
 
             <div className={styles.settingsList}>
               <SettingItem
                 icon={<Bell size={20} />}
-                title="Push Notifications"
-                description="Receive alerts about new courses and Q&A replies"
+                title="プッシュ通知"
+                description="新しいコースやQ&Aの返信に関する通知を受け取る"
                 toggle={true}
                 value={notificationsEnabled}
                 onChange={setNotificationsEnabled}
@@ -156,8 +156,8 @@ const Profile = () => {
 
               <SettingItem
                 icon={<Moon size={20} />}
-                title="Dark Mode"
-                description="Use dark theme for better visibility at night"
+                title="ダークモード"
+                description="夜間の見やすさのためにダークテーマを使用"
                 toggle={true}
                 value={darkMode}
                 onChange={setDarkMode}
@@ -168,7 +168,7 @@ const Profile = () => {
           {/* Danger Zone */}
           <motion.div variants={itemVariants}>
             <h2 style={{ marginBottom: '1.5rem', fontSize: '1.25rem', color: '#ef4444' }}>
-              Danger Zone
+              危険な操作
             </h2>
 
             <div
@@ -180,7 +180,7 @@ const Profile = () => {
               }}
             >
               <h4 style={{ margin: '0 0 0.5rem 0', color: '#ef4444' }}>
-                Delete Account
+                アカウント削除
               </h4>
               <p
                 style={{
@@ -189,7 +189,7 @@ const Profile = () => {
                   fontSize: '0.95rem',
                 }}
               >
-                Once you delete your account, there is no going back. Please be certain.
+                アカウントを削除すると元に戻せません。よくご確認ください。
               </p>
               <button
                 className="btn"
@@ -199,7 +199,7 @@ const Profile = () => {
                   fontWeight: '600',
                 }}
               >
-                Delete Account
+                アカウントを削除
               </button>
             </div>
           </motion.div>

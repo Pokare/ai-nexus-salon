@@ -8,87 +8,87 @@ const Contents = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [savedItems, setSavedItems] = useState([]);
 
-  const categories = ['All', 'AI Basics', 'Prompt Engineering', 'Tools', 'Advanced'];
+  const categories = ['すべて', 'AI基礎', 'プロンプト', 'ツール', '上級'];
 
   const contentData = [
     {
       id: 1,
-      title: 'ChatGPT Mastery: From Zero to Hero',
-      category: 'AI Basics',
-      description: 'Learn everything about ChatGPT and how to use it effectively for work and personal projects.',
-      duration: '3h 45m',
+      title: 'ChatGPT完全マスター：ゼロから実践まで',
+      category: 'AI基礎',
+      description: 'ChatGPTの基本から応用まで、仕事や個人プロジェクトで効果的に活用する方法を学びます。',
+      duration: '3時間45分',
       lessons: 24,
-      difficulty: 'Beginner',
+      difficulty: '初級',
       image: '🤖',
     },
     {
       id: 2,
-      title: 'Advanced Prompt Engineering Techniques',
-      category: 'Prompt Engineering',
-      description: 'Master the art of crafting effective prompts to get the best results from AI models.',
-      duration: '5h 20m',
+      title: '上級プロンプトエンジニアリング',
+      category: 'プロンプト',
+      description: 'AIモデルから最良の結果を引き出す、効果的なプロンプト作成技術をマスターします。',
+      duration: '5時間20分',
       lessons: 38,
-      difficulty: 'Intermediate',
+      difficulty: '中級',
       image: '✨',
     },
     {
       id: 3,
-      title: 'AI Tools Ecosystem: Your Complete Toolkit',
-      category: 'Tools',
-      description: 'Explore the best AI tools available today and learn how to integrate them into your workflow.',
-      duration: '4h 10m',
+      title: 'AIツール大全：完全ガイド',
+      category: 'ツール',
+      description: '今日利用可能な最高のAIツールを探索し、ワークフローに統合する方法を学びます。',
+      duration: '4時間10分',
       lessons: 31,
-      difficulty: 'Intermediate',
+      difficulty: '中級',
       image: '🛠️',
     },
     {
       id: 4,
-      title: 'Building AI Applications with APIs',
-      category: 'Advanced',
-      description: 'Deep dive into building production-ready AI applications using OpenAI and other APIs.',
-      duration: '6h 30m',
+      title: 'APIを使ったAIアプリケーション開発',
+      category: '上級',
+      description: 'OpenAIなどのAPIを活用して、本番環境対応のAIアプリケーションを構築する方法を学びます。',
+      duration: '6時間30分',
       lessons: 45,
-      difficulty: 'Advanced',
+      difficulty: '上級',
       image: '⚙️',
     },
     {
       id: 5,
-      title: 'The AI Revolution: Understanding Transformers',
-      category: 'AI Basics',
-      description: 'Understand the architecture behind modern AI models and how transformers work.',
-      duration: '2h 50m',
+      title: 'AI革命：Transformerを理解する',
+      category: 'AI基礎',
+      description: '最新AIモデルの基盤となるアーキテクチャとTransformerの仕組みを理解します。',
+      duration: '2時間50分',
       lessons: 18,
-      difficulty: 'Beginner',
+      difficulty: '初級',
       image: '🧠',
     },
     {
       id: 6,
-      title: 'Midjourney & DALL-E: AI Art Mastery',
-      category: 'Tools',
-      description: 'Create stunning AI-generated artwork with Midjourney and DALL-E. Perfect for designers.',
-      duration: '3h 15m',
+      title: 'Midjourney & DALL-E：AIアート入門',
+      category: 'ツール',
+      description: 'MidjourneyとDALL-Eで素晴らしいAI生成アートを作成。デザイナーにも最適です。',
+      duration: '3時間15分',
       lessons: 22,
-      difficulty: 'Beginner',
+      difficulty: '初級',
       image: '🎨',
     },
     {
       id: 7,
-      title: 'Fine-tuning Language Models',
-      category: 'Advanced',
-      description: 'Learn how to fine-tune and customize large language models for specific use cases.',
-      duration: '7h 45m',
+      title: '言語モデルのファインチューニング',
+      category: '上級',
+      description: '大規模言語モデルを特定のユースケースに合わせてカスタマイズする方法を学びます。',
+      duration: '7時間45分',
       lessons: 52,
-      difficulty: 'Advanced',
+      difficulty: '上級',
       image: '🔬',
     },
     {
       id: 8,
-      title: 'Prompt Engineering for Content Creators',
-      category: 'Prompt Engineering',
-      description: 'Specialized prompting techniques for writers, marketers, and content creators.',
-      duration: '2h 30m',
+      title: 'コンテンツクリエイター向けプロンプト術',
+      category: 'プロンプト',
+      description: 'ライター、マーケター、コンテンツクリエイター向けの専門的なプロンプト技術。',
+      duration: '2時間30分',
       lessons: 16,
-      difficulty: 'Beginner',
+      difficulty: '初級',
       image: '✍️',
     },
   ];
@@ -96,7 +96,7 @@ const Contents = () => {
   const filteredContent = useMemo(() => {
     return contentData.filter((item) => {
       const categoryMatch =
-        selectedCategory === 'All' || item.category === selectedCategory;
+        selectedCategory === 'すべて' || item.category === selectedCategory;
       const searchMatch =
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -141,9 +141,9 @@ const Contents = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants}>
-            <h1 style={{ marginBottom: '0.5rem' }}>Learning Contents</h1>
+            <h1 style={{ marginBottom: '0.5rem' }}>学習コンテンツ</h1>
             <p style={{ color: 'var(--text-secondary)', margin: 0, marginBottom: '2rem' }}>
-              Explore {contentData.length} carefully curated courses and tutorials
+              厳選された{contentData.length}本のコース・チュートリアル
             </p>
           </motion.div>
 
@@ -152,7 +152,7 @@ const Contents = () => {
             <Search size={20} color="var(--text-tertiary)" />
             <input
               type="text"
-              placeholder="Search courses..."
+              placeholder="コースを検索..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -278,7 +278,7 @@ const Contents = () => {
                         color: 'var(--text-secondary)',
                       }}
                     >
-                      📚 {content.lessons} lessons
+                      📚 {content.lessons}レッスン
                     </div>
                   </div>
 
@@ -294,15 +294,15 @@ const Contents = () => {
                         display: 'inline-block',
                         padding: '0.375rem 0.75rem',
                         background:
-                          content.difficulty === 'Beginner'
+                          content.difficulty === '初級'
                             ? 'rgba(16, 185, 129, 0.1)'
-                            : content.difficulty === 'Intermediate'
+                            : content.difficulty === '中級'
                               ? 'rgba(245, 158, 11, 0.1)'
                               : 'rgba(239, 68, 68, 0.1)',
                         color:
-                          content.difficulty === 'Beginner'
+                          content.difficulty === '初級'
                             ? '#10b981'
-                            : content.difficulty === 'Intermediate'
+                            : content.difficulty === '中級'
                               ? '#f59e0b'
                               : '#ef4444',
                         fontSize: '0.75rem',
@@ -325,8 +325,8 @@ const Contents = () => {
               variants={itemVariants}
             >
               <span style={{ fontSize: '3rem' }}>🔍</span>
-              <h3>No content found</h3>
-              <p>Try adjusting your search or category filters</p>
+              <h3>コンテンツが見つかりません</h3>
+              <p>検索条件やカテゴリを変更してみてください</p>
             </motion.div>
           )}
         </motion.div>

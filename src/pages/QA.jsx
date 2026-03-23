@@ -18,8 +18,8 @@ const QA = () => {
   const dummyQuestions = [
     {
       id: '1',
-      title: 'How do I write effective prompts for ChatGPT?',
-      body: 'I want to get better results from ChatGPT. What are the best practices for prompt writing?',
+      title: 'ChatGPTで効果的なプロンプトを書くには？',
+      body: 'ChatGPTからより良い結果を得たいです。プロンプト作成のベストプラクティスは何ですか？',
       author: 'alex@example.com',
       authorInitial: 'A',
       createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
@@ -28,8 +28,8 @@ const QA = () => {
     },
     {
       id: '2',
-      title: 'What is the difference between GPT-3 and GPT-4?',
-      body: 'Can someone explain the key differences and improvements in GPT-4 compared to GPT-3?',
+      title: 'GPT-3とGPT-4の違いは何ですか？',
+      body: 'GPT-3と比較してGPT-4の主な違いと改善点を教えてください。',
       author: 'jordan@example.com',
       authorInitial: 'J',
       createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
@@ -38,8 +38,8 @@ const QA = () => {
     },
     {
       id: '3',
-      title: 'How to integrate APIs with AI models?',
-      body: 'I want to build an app that uses OpenAI API. Where should I start?',
+      title: 'AIモデルとAPIを連携するには？',
+      body: 'OpenAI APIを使ったアプリを作りたいです。どこから始めればいいですか？',
       author: 'sam@example.com',
       authorInitial: 'S',
       createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
@@ -48,8 +48,8 @@ const QA = () => {
     },
     {
       id: '4',
-      title: 'Best tools for AI image generation?',
-      body: 'Looking for alternatives to Midjourney. What are your recommendations?',
+      title: 'AI画像生成のおすすめツールは？',
+      body: 'Midjourneyの代替ツールを探しています。おすすめはありますか？',
       author: 'casey@example.com',
       authorInitial: 'C',
       createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
@@ -81,7 +81,7 @@ const QA = () => {
     setError('');
 
     if (!formData.title.trim() || !formData.body.trim()) {
-      setError('Please fill in all fields');
+      setError('すべての項目を入力してください');
       return;
     }
 
@@ -100,7 +100,7 @@ const QA = () => {
       setFormData({ title: '', body: '' });
       setShowModal(false);
     } catch (err) {
-      setError('Failed to post question. Please try again.');
+      setError('質問の投稿に失敗しました。もう一度お試しください。');
       console.error(err);
     } finally {
       setLoading(false);
@@ -114,10 +114,10 @@ const QA = () => {
     const diffHours = Math.floor(diffMs / 3600000);
     const diffDays = Math.floor(diffMs / 86400000);
 
-    if (diffMins < 1) return 'Just now';
-    if (diffMins < 60) return `${diffMins}m ago`;
-    if (diffHours < 24) return `${diffHours}h ago`;
-    if (diffDays < 7) return `${diffDays}d ago`;
+    if (diffMins < 1) return 'たった今';
+    if (diffMins < 60) return `${diffMins}分前`;
+    if (diffHours < 24) return `${diffHours}時間前`;
+    if (diffDays < 7) return `${diffDays}日前`;
 
     return date.toLocaleDateString();
   };
@@ -147,9 +147,9 @@ const QA = () => {
           {/* Header */}
           <motion.div className={styles.header} variants={itemVariants}>
             <div>
-              <h1>Q&A Community</h1>
+              <h1>Q&Aコミュニティ</h1>
               <p style={{ color: 'var(--text-secondary)', margin: '0.5rem 0 0 0' }}>
-                Ask questions and share knowledge with the community
+                質問して、コミュニティと知識を共有しよう
               </p>
             </div>
             <button
@@ -158,7 +158,7 @@ const QA = () => {
               style={{ gap: '0.5rem' }}
             >
               <Plus size={20} />
-              Ask Question
+              質問する
             </button>
           </motion.div>
 
@@ -175,8 +175,8 @@ const QA = () => {
                   exit="hidden"
                 >
                   <MessageCircle size={48} color="var(--text-tertiary)" />
-                  <h3>No questions yet</h3>
-                  <p>Be the first to ask a question and start a discussion!</p>
+                  <h3>まだ質問がありません</h3>
+                  <p>最初の質問を投稿してディスカッションを始めましょう！</p>
                 </motion.div>
               ) : (
                 questions.map((question) => (
@@ -231,8 +231,8 @@ const QA = () => {
                         >
                           <span>{question.author}</span>
                           <span>{formatDate(question.createdAt)}</span>
-                          <span>💬 {question.replies} replies</span>
-                          <span>👁️ {question.views} views</span>
+                          <span>💬 {question.replies}件の返信</span>
+                          <span>👁️ {question.views}回表示</span>
                         </div>
                       </div>
                     </div>
@@ -262,7 +262,7 @@ const QA = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className={styles.modalHeader}>
-                <h2>Ask a Question</h2>
+                <h2>質問を投稿</h2>
                 <button
                   onClick={() => setShowModal(false)}
                   className={styles.closeBtn}
@@ -273,11 +273,11 @@ const QA = () => {
 
               <form onSubmit={handleSubmit} className={styles.form}>
                 <div className="input-group">
-                  <label className="input-label">Question Title</label>
+                  <label className="input-label">質問タイトル</label>
                   <input
                     type="text"
                     className="input-field"
-                    placeholder="What would you like to ask?"
+                    placeholder="何について質問しますか？"
                     value={formData.title}
                     onChange={(e) =>
                       setFormData({ ...formData, title: e.target.value })
@@ -287,10 +287,10 @@ const QA = () => {
                 </div>
 
                 <div className="input-group">
-                  <label className="input-label">Details</label>
+                  <label className="input-label">詳細</label>
                   <textarea
                     className="input-field"
-                    placeholder="Provide more details about your question..."
+                    placeholder="質問の詳細を入力してください..."
                     rows="5"
                     value={formData.body}
                     onChange={(e) =>
@@ -325,7 +325,7 @@ const QA = () => {
                     onClick={() => setShowModal(false)}
                     className="btn btn-secondary"
                   >
-                    Cancel
+                    キャンセル
                   </button>
                   <button
                     type="submit"
@@ -334,7 +334,7 @@ const QA = () => {
                     style={{ gap: '0.5rem' }}
                   >
                     <Send size={18} />
-                    {loading ? 'Posting...' : 'Post Question'}
+                    {loading ? '投稿中...' : '質問を投稿'}
                   </button>
                 </div>
               </form>
