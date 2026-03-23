@@ -1,23 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { LogOut, Bell, Moon, Mail, Calendar, Award } from 'lucide-react';
+import { Bell, Moon, Mail, Calendar, Award } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
 import styles from './Profile.module.css';
 
 const Profile = () => {
-  const { currentUser, logout } = useAuth();
-  const navigate = useNavigate();
+  const { currentUser } = useAuth();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate('/login');
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
   };
 
   const userInitial = currentUser?.email?.[0]?.toUpperCase() || 'U';
@@ -103,14 +93,6 @@ const Profile = () => {
             <div style={{ display: 'flex', gap: '1rem' }}>
               <button className="btn btn-secondary" style={{ flex: 1 }}>
                 プロフィール編集
-              </button>
-              <button
-                className="btn btn-ghost"
-                onClick={handleLogout}
-                style={{ flex: 1, gap: '0.5rem', color: '#ef4444' }}
-              >
-                <LogOut size={18} />
-                ログアウト
               </button>
             </div>
           </motion.div>

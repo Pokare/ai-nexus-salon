@@ -34,64 +34,55 @@ const Login = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.3, staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-  };
-
   return (
     <div className={styles.container}>
-      <div className={styles.orbContainer}>
-        <div className={`${styles.orb} ${styles.orbPrimary}`} />
-        <div className={`${styles.orb} ${styles.orbSecondary}`} />
-        <div className={`${styles.orb} ${styles.orbAccent}`} />
+      <div className={styles.left}>
+        <div className={styles.leftContent}>
+          <div className={styles.logoMark}>
+            <Zap size={28} />
+          </div>
+          <h1 className={styles.brand}>AI Nexus</h1>
+          <p className={styles.tagline}>AIの学びとコミュニティへの入口</p>
+
+          <div className={styles.features}>
+            <div className={styles.feature}>
+              <span className={styles.featureIcon}>📚</span>
+              <div>
+                <h4>体系的な学習</h4>
+                <p>初級から上級まで段階的に学べるカリキュラム</p>
+              </div>
+            </div>
+            <div className={styles.feature}>
+              <span className={styles.featureIcon}>💬</span>
+              <div>
+                <h4>コミュニティ</h4>
+                <p>仲間と質問し合い、知識を深める</p>
+              </div>
+            </div>
+            <div className={styles.feature}>
+              <span className={styles.featureIcon}>🚀</span>
+              <div>
+                <h4>実践的スキル</h4>
+                <p>すぐに使えるAIツール活用法を習得</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <motion.div
-        className={styles.content}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.div className={styles.header} variants={itemVariants}>
-          <div className={styles.logo}>
-            <Zap size={32} />
-            <h1>AI Nexus</h1>
-          </div>
-          <p className={styles.subtitle}>
-            AIの学びとコミュニティへの入口
+      <div className={styles.right}>
+        <motion.div
+          className={styles.formContainer}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <h2 className={styles.formTitle}>
+            {isLogin ? 'ログイン' : '新規登録'}
+          </h2>
+          <p className={styles.formSubtitle}>
+            {isLogin ? 'アカウントにログインしてください' : '新しいアカウントを作成します'}
           </p>
-        </motion.div>
-
-        <motion.div className={styles.card} variants={itemVariants}>
-          <div className={styles.toggle}>
-            <button
-              className={`${styles.toggleBtn} ${isLogin ? styles.active : ''}`}
-              onClick={() => {
-                setIsLogin(true);
-                setError('');
-              }}
-            >
-              ログイン
-            </button>
-            <button
-              className={`${styles.toggleBtn} ${!isLogin ? styles.active : ''}`}
-              onClick={() => {
-                setIsLogin(false);
-                setError('');
-              }}
-            >
-              新規登録
-            </button>
-          </div>
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className="input-group">
@@ -111,7 +102,7 @@ const Login = () => {
               <input
                 type="password"
                 className="input-field"
-                placeholder="••••••••"
+                placeholder="6文字以上"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -119,26 +110,20 @@ const Login = () => {
             </div>
 
             {error && (
-              <motion.div
-                className={styles.error}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                {error}
-              </motion.div>
+              <div className={styles.error}>{error}</div>
             )}
 
             <button
               type="submit"
               className="btn btn-primary"
-              style={{ width: '100%', marginTop: '1.5rem' }}
+              style={{ width: '100%', padding: '0.75rem', marginTop: '0.5rem' }}
               disabled={loading}
             >
               {loading ? 'しばらくお待ちください...' : isLogin ? 'ログイン' : '新規登録'}
             </button>
           </form>
 
-          <p className={styles.hint}>
+          <p className={styles.switchText}>
             {isLogin ? 'アカウントをお持ちでない方は ' : 'すでにアカウントをお持ちの方は '}
             <button
               type="button"
@@ -146,37 +131,13 @@ const Login = () => {
                 setIsLogin(!isLogin);
                 setError('');
               }}
-              className={styles.link}
+              className={styles.switchLink}
             >
               {isLogin ? '新規登録' : 'ログイン'}
             </button>
           </p>
         </motion.div>
-
-        <motion.div className={styles.features} variants={itemVariants}>
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>💡</div>
-            <div>
-              <h4>AIを学ぶ</h4>
-              <p>AIツールと概念をマスター</p>
-            </div>
-          </div>
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>🤝</div>
-            <div>
-              <h4>つながる</h4>
-              <p>活気あるコミュニティに参加</p>
-            </div>
-          </div>
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>⚡</div>
-            <div>
-              <h4>成長する</h4>
-              <p>AIスキルを加速させよう</p>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 };

@@ -1,89 +1,52 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  gap: 2rem;
-}
-
-.header h1 {
-  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 .sectionTitle {
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 0.8125rem;
+  font-weight: 600;
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 1rem;
-  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 .notificationGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .unread {
-  background: rgba(99, 102, 241, 0.05);
-  border-left: 3px solid var(--primary-start);
+  border-left: 3px solid var(--primary) !important;
 }
 
 .emptyState {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
   text-align: center;
-  color: var(--text-secondary);
+  padding: 4rem 2rem;
 }
 
 .emptyState h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  margin: 1rem 0 0.5rem;
   color: var(--text-primary);
 }
 
 .emptyState p {
-  margin: 0;
-  color: var(--text-tertiary);
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header button {
-    width: 100%;
-  }
-
-  .list {
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .header h1 {
-    font-size: 1.5rem;
-  }
-
-  .sectionTitle {
-    font-size: 0.75rem;
-  }
+  color: var(--text-secondary);
+  font-size: 0.875rem;
 }
